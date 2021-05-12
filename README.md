@@ -1,3 +1,5 @@
-Welcome to the repo of my personal website, glad you are here! 
+I asked myself, how could I create a simpel website that could be usefull, but instead, make it useless. 
 
-Feel free to check the result [here](https://samslotemaker.github.io/portfolio/index.html)
+Well, here it is. 
+
+[Live link](https://samslotemaker.github.io/portfolio/)

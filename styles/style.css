@@ -171,6 +171,7 @@ a {
 }
 
 .checkbox-form .arm-container {
+    display: block;
     pointer-events: none;
     overflow: hidden;
     height: 100%;
