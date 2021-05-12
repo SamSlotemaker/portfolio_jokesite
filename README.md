@@ -1,4 +1,4 @@
-I asked myself, how could I create a simpel website that could be usefull, but instead, make it useless. 
+I asked myself, how could I create a simple website that could be usefull, but instead, make it useless. 
 
 Well, here it is. 
 
