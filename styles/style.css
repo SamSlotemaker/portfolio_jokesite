@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --label-width: clamp(100px, 30vw, 250px);
+    --label-height: calc(var(--label-width) /2);
+    --color1: #2b2e4a;
+    --color2: #e84545;
+    --head-size: calc(var(--label-width) / 2);
+    --character-color: lightgray;
+    --transition-delay2: .3s;
+    --animation-time: 1000ms;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color1: #2b2e4a;
+        --color2: #e84545;
+    }
+
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-color: var(--color1);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-size: clamp(1em, 4vw, 1.3em);
+}
+
+.introduction {
+    opacity: 0;
+    width: clamp(300px, 50vw, 1000px);
+    margin: auto;
+    padding-top: 7em;
+    transition: all .3s ease-out;
+}
+
+.visible .introduction {
+    transition: all .3s ease-in;
+    opacity: 1;
+}
+
+.introduction h1,
+.introduction h2 {
+    margin: 0;
+}
+
+.introduction h1 {
+    font-size: 2.5em;
+}
+
+.introduction h1 span {
+    color: var(--color2);
+}
+
+.introduction h2 {
+    font-size: 1.2em;
+}
+
+.introduction p {
+    line-height: 1.5em;
+}
+
+
+.socials {
+    margin-top: 5em;
+    padding: 0;
+    list-style-type: none;
+}
+
+.socials li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.socials img {
+    margin-right: .5em;
+    width: 1em;
+}
+
+
+/*********************/
+/******CHECKBOX*******/
+/*********************/
+
+.checkbox-form {
+    position: fixed;
+    top: 10%;
+    left: 5%;
+}
+
+.checkbox-form input {
+    width: 0;
+    height: 0;
+}
+
+.checkbox-form>label {
+    cursor: pointer;
+    display: inline-block;
+    background-image:
+        radial-gradient(circle at 25% 50%, var(--color1) 25%, var(--color2) 25%);
+    background-size: 100%;
+    width: var(--label-width);
+    height: var(--label-height);
+    border-radius: 100em;
+    filter: brightness(0.6);
+    transition: all .4s ease-in-out;
+}
+
+.checkbox-form input:checked+label {
+    background-position: calc(var(--label-width)/2) 50%;
+    filter: brightness(1);
+}
+
+
+/* character */
+.checkbox-form .head {
+    --head-radius: calc(var(--head-size) * 0.3);
+    width: var(--head-size);
+    height: calc(var(--head-size)*0.8);
+    top: 0;
+    right: 10%;
+    z-index: -1;
+    background-color: var(--character-color);
+    background: linear-gradient(to right bottom, darkgrey 25%, var(--character-color) 45%);
+    position: absolute;
+    border-radius: var(--head-radius) var(--head-radius) 0 0;
+    transition: transform var(--animation-time) ease-in-out;
+    transition-delay: 0s;
+}
+
+.checkbox-form .eyes {
+    --eye-size: calc(var(--head-size)/3);
+    width: var(--head-size);
+    height: var(--eye-size);
+    position: absolute;
+    top: 25%;
+}
+
+.checkbox-form .eye1,
+.eye2 {
+    width: var(--eye-size);
+    height: var(--eye-size);
+    background-image: radial-gradient(circle at 50% 50%, lightblue 30%, white 30%);
+    position: absolute;
+    border-radius: 50%;
+    animation: blink 1.5s alternate infinite ease-in;
+}
+
+.checkbox-form .eye1 {
+    left: 10%;
+}
+
+.checkbox-form .eye2 {
+    right: 10%;
+}
+
+.checkbox-form .arm-container {
+    pointer-events: none;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 100000em;
+}
+
+.checkbox-form .arm {
+    --arm-radius: calc(var(--head-size) * 0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotateZ(-80deg) translateY(100%);
+    border-radius: var(--arm-radius) var(--arm-radius) 0 0;
+    background-color: var(--character-color);
+    width: calc(var(--head-size)/2);
+    height: var(--head-size);
+    transition: transform var(--animation-time) ease-in-out;
+    transition-delay: 0s;
+    box-shadow: -1px -1px 8px black
+}
+
+
+/* checkbox event */
+.visible .checkbox-form {
+    pointer-events: none;
+}
+
+.visible .checkbox-form .head {
+    transition-delay: var(--transition-delay1, 0);
+    transform: rotate(20deg) translate(20%, -70%);
+}
+
+.visible .checkbox-form .arm {
+    transition-delay: var(--transition-delay2, 0);
+    transform: rotateZ(-80deg) translateY(0%);
+}
+
+@keyframes blink {
+    0% {
+        transform: scaleY(1)
+    }
+
+    90% {
+        transform: scaleY(1)
+    }
+
+    100% {
+        transform: scaleY(0)
+    }
+}
+
+/* OPTIONS FORM */
+.options {
+    padding: 0em 2em;
+    width: 100%;
+    min-width: 300px;
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+.options label {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: .1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+}
+
+.options input {
+    color: white;
+    width: 5em;
+    border-radius: 1000em;
+    background-color: var(--color2);
+    border: none;
+    margin-left: 1em;
+    padding: 1em;
+}
